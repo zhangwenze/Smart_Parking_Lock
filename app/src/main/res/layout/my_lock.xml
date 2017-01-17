@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    >
+    <include layout="@layout/viewfragment"
+        />
+    <LinearLayout android:id="@+id/op"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+
+    <Button
+    android:id="@+id/my_lock_up"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:gravity="center"
+        android:background="@drawable/up_button"
+    android:text="升起"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        style="@style/Op_Button"
+        android:layout_marginRight="20dp"
+    />
+    <Button
+        android:id="@+id/my_lock_pause"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:text="停止"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        style="@style/Op_Button"
+        android:background="@drawable/pause_button"
+        />
+    <Button
+        android:id="@+id/my_lock_down"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/down_button"
+        android:text="下降"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        style="@style/Op_Button"
+        android:textColor="#ffffff" />
+</LinearLayout>
+</RelativeLayout>
