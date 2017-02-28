@@ -8,4 +8,10 @@
         <attr name="ringColor_middle" format="color"></attr><!--电量中等的颜色-->
         <attr name="ringColor_alert" format="color"></attr><!--电量低的颜色-->
     </declare-styleable>
+
+    <declare-styleable name="PullScrollView">
+        <attr name="header" format="reference" />
+        <attr name="headerHeight" format="dimension" />
+        <attr name="headerVisibleHeight" format="dimension" />
+    </declare-styleable>
 </resources>

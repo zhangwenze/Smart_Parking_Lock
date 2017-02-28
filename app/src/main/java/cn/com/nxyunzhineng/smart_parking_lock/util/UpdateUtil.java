@@ -88,7 +88,5 @@ public class UpdateUtil extends GetHttpData {
        // packageInfo.versionName = "2";
         return packageInfo.versionName;
     }
-    public void Update(){
 
-    }
 }

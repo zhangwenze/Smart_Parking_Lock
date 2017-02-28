@@ -17,7 +17,6 @@ import cn.com.nxyunzhineng.smart_parking_lock.R;
  * @author  wenze_zhang 2016-11-20
  * @since   SDK 17
  * @version  1
- * @deprecated  扫描蓝牙结果后的适配器
  */
 
 public class LeDeviceListAdapter extends BaseAdapter {

@@ -1,16 +1,11 @@
 package cn.com.nxyunzhineng.smart_parking_lock.fragment;
-
-
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -40,10 +35,8 @@ public class AMapFragment extends Fragment
     private static final int FILL_COLOR = Color.argb(10, 0, 0, 180);
     private UiSettings mUiSettings = null;//定义一个UiSettings对象
 
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
 
        if(lyview == null) {
            lyview = inflater.inflate(R.layout.frag_map, null);
@@ -116,11 +109,9 @@ public class AMapFragment extends Fragment
     public void onLocationChanged(AMapLocation aMapLocation) {
         if (mListener != null && aMapLocation != null) {
             if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
-                Log.d("map1:","OK");
                 mListener.onLocationChanged(aMapLocation);// 显示系统小蓝点
                // aMap.moveCamera(CameraUpdateFactory.zoomTo(18));
             } else {
-                Log.d("map1:","FALSE");
             }
         }
     }
@@ -134,8 +125,6 @@ public class AMapFragment extends Fragment
             //设置定位监听
             mlocationClient.setLocationListener(this);
             //设置为高精度定位模式
-
-
             mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
             //设置定位参数
             mLocationOption.setInterval(2000);

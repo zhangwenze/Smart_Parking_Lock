@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import cn.com.nxyunzhineng.smart_parking_lock.R;
 /***
- *
  * 用来显示电量
  */
 public class PowerCharts extends View {
@@ -32,7 +31,7 @@ public class PowerCharts extends View {
     private float mStrokeWidth;
     private float mRingRadius;
     private int maxProgress  = 100;
-    private int nowProgress = 50;
+    private int nowProgress = 100;
     public PowerCharts(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttrs(context,attrs);
@@ -42,7 +41,7 @@ public class PowerCharts extends View {
         //初始化自定义控件
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PowerCharts,0,0);
         mRadius = typedArray.getDimension(R.styleable.PowerCharts_radius,60);
-        mStrokeWidth = typedArray.getDimension(R.styleable.PowerCharts_strokeWidth,20);
+        mStrokeWidth = typedArray.getDimension(R.styleable.PowerCharts_strokeWidth,30);
         mCircleColor = typedArray.getColor(R.styleable.PowerCharts_circleColor,0xffffff);
         mRingColor_Full = typedArray.getColor(R.styleable.PowerCharts_ringColor_full,0xffffff);
         mRingColor_Alert = typedArray.getColor(R.styleable.PowerCharts_ringColor_alert,0xffffff);
@@ -81,23 +80,19 @@ public class PowerCharts extends View {
     }
     @Override
     protected void onDraw(Canvas canvas) {
-        mYcenter = canvas.getHeight() / 2;  //
-        mXcenter = canvas.getWidth() / 2;
+        int width = canvas.getWidth();
+        mYcenter = canvas.getHeight() / 3;  //
+        mXcenter = width / 2;
+
         Log.v("height:",canvas.getHeight()+"");
         canvas.drawCircle(mXcenter,mYcenter,mRadius*2,mCirclePaint); //绘制出圆心
         RectF rectF = new RectF();
         rectF.left = mXcenter - mRingRadius;
         rectF.top = mYcenter - mRingRadius;
-        rectF.right = (mXcenter - mRingRadius) + mRingRadius*2;
-        rectF.bottom = (mYcenter - mRingRadius) + mRingRadius*2 ;
+        rectF.right = mXcenter + mRingRadius;
+        rectF.bottom = mYcenter - mRingRadius ;
         float value = ((float)nowProgress / (float)maxProgress )*360;
-        Log.v("value:",value+"");
         canvas.drawArc(rectF,-90,value,false,mRingPaint);
-        String text = "电量剩余"+nowProgress + "%";
-        String text2 = " 预计使用10天";
-        mTextWeight = mTextPaint.measureText(text,0,text.length());
-        canvas.drawText(text,mXcenter-mTextWeight/2,mYcenter+mTextHeight/4,mTextPaint);
-        canvas.drawText(text2,mXcenter-mTextWeight/2,mYcenter+mTextHeight/2,mTextStringPaint);
     }
     public void setProgress(int progress){
         this.nowProgress = progress;
@@ -110,4 +105,6 @@ public class PowerCharts extends View {
             mRingPaint.setColor(mRingColor_Alert);
         this.postInvalidate();
     }
+
+
 }

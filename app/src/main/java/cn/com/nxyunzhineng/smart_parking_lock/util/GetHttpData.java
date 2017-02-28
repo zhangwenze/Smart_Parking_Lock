@@ -23,6 +23,10 @@ public class GetHttpData extends AsyncTask<String,Void,String> {
     {
 
     }
+
+    public GetHttpData() {
+    }
+
     @Override
     protected String doInBackground(String[] params) {
         try {
@@ -51,7 +55,7 @@ public class GetHttpData extends AsyncTask<String,Void,String> {
 
             return re;
         } catch (MalformedURLException e ) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }

@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ts="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     >
-    <include layout="@layout/viewfragment"
-        />
+  <cn.com.nxyunzhineng.smart_parking_lock.view.PowerCharts
+      android:id="@+id/power_charts"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      ts:circleColor="#00FF00"
+      ts:radius="30dp"
+      ts:ringColor_alert="#ff00"
+      ts:ringColor_full="#ff00ff0F"
+      ts:ringColor_middle="#fffaff00"
+      ts:strokeWidth="30dp" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:background="#Ff00ff"
+
+      ></LinearLayout>
     <LinearLayout android:id="@+id/op"
         android:layout_width="match_parent"
         android:layout_height="120dp"

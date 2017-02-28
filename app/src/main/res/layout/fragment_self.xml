@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFFFF"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <ImageView
@@ -13,70 +13,31 @@
         android:layout_marginTop="-100dp"
         android:contentDescription="@null"
         android:scaleType="fitXY"
-        android:background="#FFFACCBB"
-        />
+        android:background="@drawable/scrollview_header" />
+
+    <cn.com.nxyunzhineng.smart_parking_lock.view.UserHeader
+        android:id="@+id/user_head"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:headerHeight="300dp"
+        app:headerVisibleHeight="100dp"
+        android:fillViewport="true"
+        >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <RelativeLayout
-                android:id="@+id/scroll_view_head"
+                android:id="@+id/user_info"
                 android:layout_width="match_parent"
-                android:layout_height="112dp"
-                android:layout_marginTop="100dp"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="85dp"
-                    android:layout_marginTop="27dp"
-                    >
-
-                    <TextView
-                        android:id="@+id/attention_user"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="21dp"
-                        android:layout_marginTop="6dp"
-                        android:drawablePadding="3dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:gravity="center_vertical"
-                        android:textSize="13sp"
-                        android:textColor="#57AF4E"
-                        android:text="11111111111111111"
-                        />
-
-                    <TextView
-                        android:id="@+id/user_post"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="103dp"
-                        android:layout_marginTop="4dp"
-                        android:ellipsize="end"
-                        android:text="2222222222222"
-                        android:textSize="12sp"
-                        android:textColor="#A1A1A1" />
-
-                    <TextView
-                        android:id="@+id/user_book"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="103dp"
-                        android:layout_below="@id/user_post"
-                        android:layout_marginTop="4dp"
-                        android:singleLine="true"
-                        android:ellipsize="end"
-
-                        android:textSize="12sp"
-                        android:textColor="#A1A1A1" />
-                </RelativeLayout>
-
+                android:layout_marginTop="60dp"
+                android:orientation="vertical"
+                android:layout_height="100dp"
+                android:layout_weight="0.25">
                 <ImageView
                     android:id="@+id/user_avatar"
                     android:layout_width="68dp"
@@ -84,8 +45,9 @@
                     android:padding="1px"
                     android:background="@android:color/white"
                     android:layout_marginLeft="21dp"
-                    android:contentDescription="@null"
-                     />
+                    android:layout_marginTop="20dp"
+                   android:src="@drawable/avatar_default"
+                    />
 
                 <TextView
                     android:id="@+id/user_name"
@@ -93,51 +55,488 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/user_avatar"
                     android:layout_marginLeft="13dp"
-                    android:singleLine="true"
+                    android:layout_marginTop="40dp"
+                    android:maxLines="1"
                     android:ellipsize="end"
                     android:shadowColor="@android:color/black"
                     android:shadowDx="3.0"
                     android:shadowDy="3.0"
                     android:shadowRadius="5.0"
-
                     android:textSize="20sp"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:text="登陆／注册"/>
 
-                <FrameLayout
-                    android:id="@+id/user_divider_layout"
-                    android:layout_width="match_parent"
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:gravity="end|center_vertical"
+                 >
+                 <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentRight="true"
+                     android:layout_marginRight="10dp"
+                     android:src="@drawable/hui_discount_item_rule_arrow" />
+             </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                >
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/user_avatar"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginRight="21dp">
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
 
-                    <ImageView
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:layout_marginTop="5dp"
-                        android:contentDescription="@null"
-                        android:background="#DFDFDF" />
+                        android:layout_height="wrap_content" >
 
-                    <ImageView
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/my_dianping_user_icon_normal" />
+                    </FrameLayout>
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="29dp"
-                        android:contentDescription="@null"
-                         />
-                </FrameLayout>
+                        android:layout_marginTop="3dp"
+                        android:text="我的车位锁"
+                        android:textColor="#000" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+                        <ImageView
+                            android:layout_marginRight="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/new_icon" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/my_favorite_user_icon_normal" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="最近交易"
+                        android:textColor="#000" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical" >
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/my_coupon_user_icon_normal" />
+                    </FrameLayout>
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="我的积分"
+                        android:textColor="#000" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/normal_bg_color" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/normal_space" >
 
                 <TextView
-                    android:id="@+id/user_des"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_self_parking"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:text="添加车位锁"
+                    android:textSize="18sp"
+                     />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/user_divider_layout"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginRight="21dp"
-                    android:layout_marginTop="8dp"
-                    android:ellipsize="end"
-                    android:textSize="12sp"
-                    android:textColor="#B1B1B1" />
-            </RelativeLayout>
-        </LinearLayout>
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="NEW"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/new_icon"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hui_discount_item_rule_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="11dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/normal_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/normal_space" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_self_parking"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_default"
+                    android:text="正在使用" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/new_icon"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hui_discount_item_rule_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/normal_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/normal_space" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_self_parking"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:text="我的收入"
+                    android:textSize="@dimen/text_size_default" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/new_icon"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hui_discount_item_rule_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/normal_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/normal_space" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_self_parking"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:text="我的支出"
+                    android:textSize="@dimen/text_size_default" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/new_icon" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hui_discount_item_rule_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="11dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/normal_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/normal_space" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_self_parking"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:text="车位锁设置"
+                    android:textSize="@dimen/text_size_default" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/new_icon" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hui_discount_item_rule_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="11dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/normal_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/normal_space" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_self_parking"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:text="分享我的车位锁"
+                    android:textSize="@dimen/text_size_default" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="NEW"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/new_icon"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hui_discount_item_rule_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/normal_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/normal_space" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_self_parking"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:text="我的消息"
+                    android:textSize="@dimen/text_size_default" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/new_icon" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hui_discount_item_rule_arrow" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/normal_bg_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/normal_space" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_friends"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:text="建议反馈"
+                    android:textSize="@dimen/text_size_default" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:text="NEW"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/new_icon"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hui_discount_item_rule_arrow" />
+            </LinearLayout>
+            <View
+                android:layout_marginLeft="11dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/normal_bg_color" />
+            </LinearLayout>
+</LinearLayout>
+    </cn.com.nxyunzhineng.smart_parking_lock.view.UserHeader>
+
 </RelativeLayout>

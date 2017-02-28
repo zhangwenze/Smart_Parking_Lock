@@ -30,7 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-//        this.requestWindowFeature(Window.FEATURE_NO_TITLE); //android 设置全屏,不用也可以
+      //  this.requestWindowFeature(Window.FEATURE_NO_TITLE); //android 设置全屏,不用也可以
         viewPager = (ViewPager)findViewById(R.id.wel_viewpager);
         adapter = new WelcomeItem(this,imgs);
         imgView[0] = (ImageView) findViewById(R.id.frist);
