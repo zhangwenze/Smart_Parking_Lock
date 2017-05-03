@@ -6,9 +6,24 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     >
+  <cn.com.nxyunzhineng.smart_parking_lock.view.PowerCharts
+      android:id="@+id/power_charts"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      ts:circleColor="#00FF00"
+      ts:radius="30dp"
+      ts:ringColor_alert="#ff00"
+      ts:ringColor_full="#ff00ff0F"
+      ts:ringColor_middle="#fffaff00"
+      ts:strokeWidth="30dp" />
 
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:background="#Ff00ff"
 
-  <LinearLayout android:id="@+id/op"
+      ></LinearLayout>
+    <LinearLayout android:id="@+id/op"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="#FFFFFF"
@@ -49,39 +64,5 @@
         android:layout_marginBottom="20dp"
         style="@style/Op_Button"
         android:textColor="#ffffff" />
-
-
 </LinearLayout>
-  <View
-      android:id="@+id/line"
-      android:layout_width="wrap_content"
-      android:layout_height="1dp"
-      android:background="#ff00ff"
-      android:layout_above="@id/op"
-      />
-
-
-<cn.com.nxyunzhineng.smart_parking_lock.view.HorizontalListView
-    android:id="@+id/sp_list"
-    android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:background="#ff00ff"
-    android:layout_above="@+id/op"
-
-    >
-
-</cn.com.nxyunzhineng.smart_parking_lock.view.HorizontalListView>
-
-  <cn.com.nxyunzhineng.smart_parking_lock.view.PowerCharts
-      android:id="@+id/power_charts"
-      android:layout_marginTop="50dp"
-      android:layout_width="match_parent"
-      ts:circleColor="#00FF00"
-      ts:radius="50dp"
-      ts:ringColor_alert="#ff00"
-      ts:ringColor_full="#ff00ff0F"
-      ts:ringColor_middle="#fffaff00"
-      ts:strokeWidth="40dp"
-      android:layout_height="wrap_content" />
-
 </RelativeLayout>

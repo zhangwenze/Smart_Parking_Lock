@@ -13,7 +13,7 @@
         android:layout_marginTop="-100dp"
         android:contentDescription="@null"
         android:scaleType="fitXY"
-        />
+        android:background="@drawable/scrollview_header" />
 
     <cn.com.nxyunzhineng.smart_parking_lock.view.UserHeader
         android:id="@+id/user_head"

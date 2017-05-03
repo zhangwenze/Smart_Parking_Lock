@@ -12,7 +12,7 @@ import android.app.Application;
 public class UserData extends Application {
 
     private String mName;
-    private int is;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -24,6 +24,4 @@ public class UserData extends Application {
     public String getmName(){
         return mName;
     }
-    public void setIs(int i){this.is = i;};
-    public int getIs(){return is;};
 }
