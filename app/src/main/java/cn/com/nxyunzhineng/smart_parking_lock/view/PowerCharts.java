@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import cn.com.nxyunzhineng.smart_parking_lock.R;
 /***
@@ -34,6 +37,7 @@ public class PowerCharts extends View {
     private int nowProgress = 100;
     public PowerCharts(Context context, AttributeSet attrs) {
         super(context, attrs);
+
         initAttrs(context,attrs);
         initPaint();
     }
@@ -81,18 +85,15 @@ public class PowerCharts extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         int width = canvas.getWidth();
-        mYcenter = canvas.getHeight() / 3;  //
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+
+
+
+        mYcenter = displayMetrics.heightPixels/4 - 80;
         mXcenter = width / 2;
 
-        Log.v("height:",canvas.getHeight()+"");
-        canvas.drawCircle(mXcenter,mYcenter,mRadius*2,mCirclePaint); //绘制出圆心
-        RectF rectF = new RectF();
-        rectF.left = mXcenter - mRingRadius;
-        rectF.top = mYcenter - mRingRadius;
-        rectF.right = mXcenter + mRingRadius;
-        rectF.bottom = mYcenter - mRingRadius ;
-        float value = ((float)nowProgress / (float)maxProgress )*360;
-        canvas.drawArc(rectF,-90,value,false,mRingPaint);
+        Log.d("canvas.height","----------------------->"+canvas.getHeight());
+        canvas.drawCircle(mXcenter,mYcenter,width/4,mCirclePaint); //绘制出圆心
     }
     public void setProgress(int progress){
         this.nowProgress = progress;
@@ -106,5 +107,40 @@ public class PowerCharts extends View {
         this.postInvalidate();
     }
 
+    /**
+     *  测量宽度、高度
+     * @param widthMeasureSpec
+     * @param heightMeasureSpec
+     */
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        switch (widthMode)
+        {
+            case MeasureSpec.EXACTLY:
+                break;
+            case MeasureSpec.AT_MOST:
+                break;
+            case MeasureSpec.UNSPECIFIED:
+                break;
 
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom1) {
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int bottom = displayMetrics.heightPixels/2;
+
+        super.onLayout(changed, left, top, right, bottom);
+    }
+
+    @Override
+    public void layout(int l, int t, int r, int b) {
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int bottom = displayMetrics.heightPixels/2;
+        Log.d("DisplayMetrics.Height","------------------------->"+bottom);
+        super.layout(l, t, r, bottom);
+    }
 }

@@ -59,6 +59,7 @@ import cn.com.nxyunzhineng.smart_parking_lock.fragment.SelfRoomFragment;
 import cn.com.nxyunzhineng.smart_parking_lock.service.BluetoothLeService;
 import cn.com.nxyunzhineng.smart_parking_lock.util.URLPath;
 import cn.com.nxyunzhineng.smart_parking_lock.util.UpdateUtil;
+import cn.com.nxyunzhineng.smart_parking_lock.util.UserData;
 
 
 public class MainActivity extends AppCompatActivity
@@ -167,35 +168,35 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void isSupportBLE(){
-        if(!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)){
-           String string = "蓝牙不支持，请更换android4.3及以上的智能手机";
-            Snackbar.make(toolbar,string,Snackbar.LENGTH_LONG).show();
-        }else{
-            String string = "蓝牙支持";
-          //  Snackbar.make(toolbar,string,Snackbar.LENGTH_LONG).getView().setBackgroundColor(0xFF0;
-            Snackbar snackbar = Snackbar.make(toolbar,string,Snackbar.LENGTH_SHORT);
-            snackbar.getView().setBackgroundColor(Color.RED);
-            snackbar.show();
-            this.openBLE();
-        }
+//        if(!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)){
+//           String string = "蓝牙不支持，请更换android4.3及以上的智能手机";
+//            Snackbar.make(toolbar,string,Snackbar.LENGTH_LONG).show();
+//        }else{
+//            String string = "蓝牙支持";
+//          //  Snackbar.make(toolbar,string,Snackbar.LENGTH_LONG).getView().setBackgroundColor(0xFF0;
+//            Snackbar snackbar = Snackbar.make(toolbar,string,Snackbar.LENGTH_SHORT);
+//            snackbar.getView().setBackgroundColor(Color.RED);
+//            snackbar.show();
+//            this.openBLE();
+//        }
 
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     private void openBLE(){
-        BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-        BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
-        if(bluetoothAdapter == null || !bluetoothAdapter.isEnabled()){
-            Intent enable = new Intent (BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enable,REQUEST_ENABLE_BLE);
-        }else
-        {
-            String string = "蓝牙已经打开";
-            //  Snackbar.make(toolbar,string,Snackbar.LENGTH_LONG).getView().setBackgroundColor(0xFF0;
-            Snackbar snackbar = Snackbar.make(toolbar,string,Snackbar.LENGTH_SHORT);
-            snackbar.getView().setBackgroundColor(Color.DKGRAY);
-            snackbar.show();
-        }
+//        BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+//        BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+//        if(bluetoothAdapter == null || !bluetoothAdapter.isEnabled()){
+//            Intent enable = new Intent (BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//            startActivityForResult(enable,REQUEST_ENABLE_BLE);
+//        }else
+//        {
+//            String string = "蓝牙已经打开";
+//            //  Snackbar.make(toolbar,string,Snackbar.LENGTH_LONG).getView().setBackgroundColor(0xFF0;
+//            Snackbar snackbar = Snackbar.make(toolbar,string,Snackbar.LENGTH_SHORT);
+//            snackbar.getView().setBackgroundColor(Color.DKGRAY);
+//            snackbar.show();
+//        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,7 +215,7 @@ public class MainActivity extends AppCompatActivity
         UpdateUtil lg = new UpdateUtil(MainActivity.this);
         lg.execute(URLPath.GETVERSION);
         mBluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-        mBluetoothAdapter = mBluetoothManager.getAdapter();
+       mBluetoothAdapter = mBluetoothManager.getAdapter();
         mLeDeviceListAdapter = new LeDeviceListAdapter(this);
         mScanningDialog = new AlertDialog.Builder(this).setView(R.layout.scan_dialog).create();
         mScanningDialog.setCanceledOnTouchOutside(false);
@@ -238,7 +239,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
+        UserData data = (UserData) this.getApplication();
+        if(data.getIs()!=1)
         my_lock_layout.performClick();
+        else
+            car_life_layout.performClick();
         return true;
     }
     @Override
@@ -249,7 +254,7 @@ public class MainActivity extends AppCompatActivity
                 scanLeDevice(true);
                 break;
             case R.id.action_settings:
-                startActivity(new Intent(this,SettingsActivity.class));
+                startActivity(new Intent(this,AddActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -258,6 +263,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+
         registerReceiver(mGattUpdateReceiver,makeGattUpdateIntentFilter());
         if(mBluetoothLeService != null) {
             final boolean result = mBluetoothLeService.connect(mDeviceAddress);
@@ -289,6 +295,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
 
+        UserData data = (UserData) this.getApplication();
+
         this.reset();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         HideFragment(fragmentTransaction);
@@ -308,7 +316,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.arounds_lock_layout:
                 title.setText("周边车位锁");
+                if(menu.size()!=0)
                 menu.clear();
+
                 getMenuInflater().inflate(R.menu.arounds_locl_menu, menu);
                 around_lock_text.setTextColor(press_color);
                 around_lock_img.setImageResource(R.drawable.ic_location_press);
@@ -320,11 +330,16 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.car_life_layout:
                 title.setText("个人中心");
-                menu.clear();
+                //if(data.getIs() != 1)
+
+                    menu.clear();
+                    getMenuInflater().inflate(R.menu.settingmenu, menu);
+
                 car_life_text.setTextColor(press_color);
                 car_life_img.setImageResource(R.drawable.ic_me_press);
                 if(selfRoomFragment == null){
                     selfRoomFragment = new SelfRoomFragment();
+
                     fragmentTransaction.add(R.id.main_fragment,selfRoomFragment);
                 }else
                     fragmentTransaction.show(selfRoomFragment);
@@ -464,6 +479,47 @@ public class MainActivity extends AppCompatActivity
         if(targetCharacteristic == null)
             return false;
         String command = "up12345678";
+        try {
+            targetCharacteristic.setValue(command.getBytes("ascii"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        mBluetoothLeService.writeCharacteristic(targetCharacteristic,null);
+        mBluetoothLeService.readCharacteristic(targetCharacteristic);
+        try {
+            Log.d("characteristic:",new String(targetCharacteristic.getValue(),"ascii"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        Log.d("TARGET UUID",targetServive.getUuid().toString());
+
+        return true;
+    }
+    public static boolean actionDown(){
+        if(gattServices == null) {
+            Log.e("fail to get service","code 1");
+            return false;
+        }
+        final String uuid = "0000fff6-0000-1000-8000-00805f9b34fb";
+        BluetoothGattService targetServive = null;
+        BluetoothGattCharacteristic targetCharacteristic = null;
+        for (BluetoothGattService gattService : gattServices){
+            Log.d("UUID",gattService.getUuid().toString());
+            List<BluetoothGattCharacteristic> ls ;
+            ls=gattService.getCharacteristics();
+            for(BluetoothGattCharacteristic characteristic : ls){
+                Log.w("characteristic:",characteristic.getUuid().toString());
+                if(characteristic.getUuid().toString().equals(uuid)){
+                    targetCharacteristic = characteristic;
+                }
+            }
+            targetServive = gattService;
+        }
+        if(targetServive == null)
+            return false;
+        if(targetCharacteristic == null)
+            return false;
+        String command = "down123456";
         try {
             targetCharacteristic.setValue(command.getBytes("ascii"));
         } catch (UnsupportedEncodingException e) {

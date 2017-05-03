@@ -2,6 +2,99 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
+    <View
+        android:layout_marginLeft="11dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/normal_bg_color" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phone_edit"
 
+        android:padding="10dp"
+        android:id="@+id/check"
+        >
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_self_parking"
+            android:drawablePadding="3dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_default"
+
+            android:text="车位锁编号"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:text="扫秒车位锁"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/get_code" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/check"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:id="@+id/password_reg"
+        >
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_self_parking"
+            android:drawablePadding="3dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_default"
+            android:text="6位密码"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/check"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:id="@+id/location_reg"
+        >
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_self_parking"
+            android:drawablePadding="3dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_default"
+            android:text="添加位置信息"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:text="获取位置"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/get_location" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_reg"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:id="@+id/bangding"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="绑定"
+            />
+
+    </LinearLayout>
 </LinearLayout>

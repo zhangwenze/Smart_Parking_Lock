@@ -73,7 +73,7 @@ public class FristActivity extends Activity {
         textView = (TextView) findViewById(R.id.app_name);
         animation.setDuration(1500);
         checkPermissions();
-
+        animation.start();
     }
     private void goWelcome(){
         Intent intent = new Intent(this,WelcomeActivity.class);
@@ -94,7 +94,7 @@ public class FristActivity extends Activity {
                     return;
                 }
             }
-            animation.start();
+
             textView.setAnimation(animation);
         }
     }
@@ -109,7 +109,7 @@ public class FristActivity extends Activity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        animation.start();
+
         textView.setAnimation(animation);
     }
 }
